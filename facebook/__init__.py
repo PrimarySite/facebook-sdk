@@ -24,13 +24,17 @@ https://developers.facebook.com/docs/graph-api.
 
 """
 
+import base64
+import binascii
 import hashlib
 import hmac
-import binascii
-import base64
-import requests
 import json
 import re
+
+import requests
+
+from . import version
+
 
 try:
     from urllib.parse import parse_qs, urlencode, urlparse
@@ -38,7 +42,6 @@ except ImportError:
     from urlparse import parse_qs, urlparse
     from urllib import urlencode
 
-from . import version
 
 
 __version__ = version.__version__
@@ -79,8 +82,7 @@ class GraphAPI(object):
 
     """
 
-    def __init__(self, access_token=None, timeout=None, version=None,
-                 proxies=None, app_secret=None, session=None):
+
     def __init__(
         self,
         access_token=None,

@@ -13,10 +13,12 @@
 # WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 # License for the specific language governing permissions and limitations
 # under the License.
-import facebook
+import inspect
 import os
 import unittest
-import inspect
+
+import facebook
+
 
 try:
     from urllib.parse import parse_qs, urlencode, urlparse
@@ -472,7 +474,5 @@ class TestAppSecretProof(FacebookTestCase):
             timeout=None)
 
 
-if __name__ == '__main__':
-=======
 if __name__ == "__main__":
     unittest.main()
