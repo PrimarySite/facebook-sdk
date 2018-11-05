@@ -25,19 +25,16 @@ jobs:
               python -m venv ~/venv;
             fi;
             . ~/venv/bin/activate
-            pip install pygments
+            pip install flake8 doc8 pygments
             pip install .
       - run:
           name: run linting
           command: |
             . ~/venv/bin/activate
-            if [ $(python -c "import platform; print(platform.python_version()[:3])") == "3.7" ]; then
-              pip install black doc8;
-              black -l 79 --check examples;
-              black -l 79 --check facebook;
-              black -l 79 --check test;
-              doc8 -q *.rst docs/*.rst;
-            fi;
+            flake8 --ignore=E402,F401 examples
+            flake8 facebook
+            flake8 test
+            doc8 -q *.rst docs/*.rst
       - run:
           name: run automated tests
           command: |
