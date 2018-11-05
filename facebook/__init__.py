@@ -35,7 +35,6 @@ import requests
 
 from . import version
 
-
 try:
     from urllib.parse import parse_qs, urlencode, urlparse
 except ImportError:
@@ -89,6 +88,7 @@ class GraphAPI(object):
         timeout=None,
         version=None,
         proxies=None,
+        app_secret=None,
         session=None,
     ):
         # The default version is only used if the version kwarg does not exist.
