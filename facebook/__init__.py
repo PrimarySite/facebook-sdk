@@ -46,8 +46,7 @@ __version__ = version.__version__
 FACEBOOK_GRAPH_URL = "https://graph.facebook.com/"
 FACEBOOK_WWW_URL = "https://www.facebook.com/"
 FACEBOOK_OAUTH_DIALOG_PATH = "dialog/oauth?"
-VALID_API_VERSIONS = [
-    "2.7", "2.8", "2.9", "2.10", "2.11", "2.12", "3.0"]
+VALID_API_VERSIONS = ["2.8", "2.9", "2.10", "2.11", "2.12", "3.0", "3.1"]
 VALID_SEARCH_TYPES = ["place", "placetopic"]
 
 
@@ -219,11 +218,15 @@ class GraphAPI(object):
 
     def delete_object(self, id):
         """Deletes the object with the given ID from the graph."""
-        self.request("{0}/{1}".format(self.version, id), method="DELETE")
+        return self.request(
+            "{0}/{1}".format(self.version, id), method="DELETE"
+        )
 
     def delete_request(self, user_id, request_id):
         """Deletes the Request with the given ID for the given user."""
-        self.request("{0}_{1}".format(request_id, user_id), method="DELETE")
+        return self.request(
+            "{0}_{1}".format(request_id, user_id), method="DELETE"
+        )
 
     def put_photo(self, image, album_path="me/photos", **kwargs):
         """
